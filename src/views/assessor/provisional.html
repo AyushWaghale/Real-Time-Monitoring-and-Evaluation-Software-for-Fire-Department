@@ -51,39 +51,40 @@
 
 <body class="bg-gray-50">
     <div class="flex h-screen">
-       <!-- Sidebar -->
-<aside class="w-64 sidebar-bg border-r border-gray-200">
-    <div class="p-6">
-        <h2 class="text-xl font-semibold text-red-theme">Fire NOC Portal</h2>
-    </div>
-    <nav class="mt-2">
-        <a href="./dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-red-50">
-            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-            </svg>
-            Dashboard
-        </a>
-        <a href="./provisional.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-red-50 bg-red-100">
-            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-            </svg>
-            Provisional Applications
-        </a>
-        <a href="./renewal-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-red-50">
-            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-            </svg>
-            Renewal Applications
-        </a>
-       
-        <button onclick="logout()" class="w-full flex items-center px-6 py-3 text-gray-600 hover:bg-red-50">
-            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-            </svg>
-            Logout
-        </button>
-    </nav>
-</aside>
+        <!-- Sidebar -->
+        <aside class="w-64 sidebar-bg border-r border-gray-200">
+            <div class="p-6">
+                <h2 class="text-xl font-semibold text-red-theme">Fire NOC Portal</h2>
+            </div>
+            <nav class="mt-2">
+                <a href="./dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-red-50">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="./provisional.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-red-50 bg-red-100">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    Provisional Applications
+                </a>
+                <a href="./renewal-dashboard.html" class="flex items-center px-6 py-3 text-gray-600 hover:bg-red-50">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                    </svg>
+                    Renewal Applications
+                </a>
+                
+                <button onclick="logout()" class="w-full flex items-center px-6 py-3 text-gray-600 hover:bg-red-50">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    Logout
+                </button>
+            </nav>
+        </aside>
+
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
             <!-- Top Bar -->
@@ -92,7 +93,7 @@
                     <h1 class="text-xl font-semibold text-white">Assessor Dashboard</h1>
                     <div class="flex items-center">
                         <span class="text-sm text-white">State:</span>
-                        <span id="assessorState" class="ml-2 text-sm font-medium text-white">Delhi</span>
+                        <span id="assessorState" class="ml-2 text-sm font-medium text-white">Loading...</span>
                     </div>
                 </div>
             </header>
@@ -154,6 +155,10 @@
                         </table>
                     </div>
                 </div>
+
+               
+
+                
             </main>
         </div>
     </div>
@@ -196,7 +201,7 @@
 
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('/api/assessor/applications', {
+                const response = await fetch('/api/assessor/provisional-applications', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -338,8 +343,8 @@
                 }
                 
                 // Navigate to the application-details page with the application ID
-                window.location.href = `application-details.html?id=${id}`;
-                
+                window.location.href = `provisional-details.html?id=${encodeURIComponent(id)}`;
+               
             } catch (error) {
                 console.error('Error viewing application:', error);
                 showError('Failed to open application details');
@@ -362,7 +367,10 @@
                 }
             });
         }
-    </script>
+
+       
+
+       </script>
 </body>
 
 </html>

@@ -67,6 +67,22 @@
                         <p id="submissionDate" class="mt-1"></p>
                     </div>
                 </div>
+                
+                <!-- Prevoius NOC details -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Previous NOC Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">NOC Number</label>
+                            <p id="nocNumber" class="mt-1"></p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">issueDate</label>
+                            <p id="issueDate" class="mt-1"></p>
+                        </div>
+                       
+                    </div>
+                </div>
 
                 <!-- Applicant Information -->
                 <div>
@@ -379,6 +395,14 @@
                             </svg>
                             Equipment Bills
                         </button>
+
+                        <button onclick="viewDocument('certificateUrl')" 
+                        class="flex items-center px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M4 18h12a2 2 0 002-2V6.414l-3.293-3.293A1 1 0 0014.414 3H4a2 2 0 00-2 2v11a2 2 0 002 2z"/>
+                    </svg>
+                    NOC Certificate
+                </button>
                     </div>
                 </div>
 
@@ -441,12 +465,13 @@ async function loadApplicationDetails(applicationId) {
     try {
         toggleLoading(true); // Show loading spinner
 
-        const response = await fetch(`/api/assessor/applications/${applicationId}`);
+        const response = await fetch(`/api/assessor/renew-applications/${applicationId}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch application data: ${response.status}`);
         }
 
         const { application } = await response.json();
+        console.log(application);
         if (!application) {
             throw new Error('Application data not found.');
         }
@@ -482,6 +507,10 @@ function updateUI(application) {
         updateField('contactNumber', application.contactNumber);
         updateField('buildingAddress', application.buildingAddress);
 
+        //Previous Date
+        updateField('nocNumber', application.nocNumber);
+        updateField('issueDate', application.issueDate);
+       
         // Building Details
         updateField('buildingName', application.buildingName);
         updateField('buildingType', application.buildingType);
@@ -672,7 +701,8 @@ async function viewDocument(documentType) {
             buildingBlueprint: applicationData.buildingBlueprintUrl,
             planApprovalCert: applicationData.planApprovalCertUrl,
             fireSafetyPlan: applicationData.fireSafetyPlanUrl,
-            equipmentBills: applicationData.equipmentBillsUrl
+            equipmentBills: applicationData.equipmentBillsUrl,
+            certificateUrl:applicationData.certificateUrl,
         };
 
         const url = documentUrlMap[documentType];
@@ -736,7 +766,7 @@ async function submitAssessment() {
         }
 
         // Make API call
-        const response = await fetch('http://localhost:5000/api/assessor/update', {
+        const response = await fetch('http://localhost:5000/api/assessor/updateRenewal', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -749,19 +779,35 @@ async function submitAssessment() {
             })
         });
 
-        const data = await response.json();
+        // Log raw response for debugging
+        const rawResponse = await response.text();
+        console.log('Raw Response:', rawResponse);
 
+        // Validate response status and content type
         if (!response.ok) {
-            throw new Error(data.message || 'Failed to submit assessment');
+            throw new Error(`HTTP Error: ${response.status}. ${rawResponse}`);
         }
 
-        alert('Assessment submitted successfully!');
+        // Attempt to parse the JSON response
+        let data;
+        try {
+            data = JSON.parse(rawResponse);
+        } catch (err) {
+            throw new Error('Received non-JSON response from the server');
+        }
+
+        // Further validation of the response
+        if (!data || !data.message) {
+            throw new Error('Unexpected response format from server');
+        }
+
+        alert(data.message || 'Assessment submitted successfully!');
         window.location.href = 'dashboard.html';
 
     } catch (error) {
         console.error('Error submitting assessment:', error);
         alert(error.message || 'Error submitting assessment. Please try again.');
-        
+    } finally {
         // Restore button state
         submitButton.innerHTML = originalButtonText;
         submitButton.disabled = false;

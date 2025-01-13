@@ -92,7 +92,7 @@
                     <h1 class="text-xl font-semibold text-white">Assessor Dashboard</h1>
                     <div class="flex items-center">
                         <span class="text-sm text-white">State:</span>
-                        <span id="assessorState" class="ml-2 text-sm font-medium text-white">Delhi</span>
+                        <span id="assessorState" class="ml-2 text-sm font-medium text-white">Loading...</span>
                     </div>
                 </div>
             </header>
@@ -196,7 +196,7 @@
 
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('/api/assessor/applications', {
+                const response = await fetch('/api/assessor/local-authority-applications', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
